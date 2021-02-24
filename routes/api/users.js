@@ -4,6 +4,10 @@ const gravatar = require('gravatar');
 const { check, validationResult } = require('express-validator/check');
 const User = require('../../models/User');
 
+
+//@route GET api/users
+router.get('/', (req, res) => res.send('Users route'));
+
 // @route   POST api/users
 // @desc    Register user
 // @access  Public
@@ -27,7 +31,7 @@ router.post('/', [
             }
             // Get user gravatar
             const avatar = normalize(
-                gravatar.url(emial, {
+                gravatar.url(email, {
                     s: '200',
                     r: 'pg',
                     d: 'mm'
