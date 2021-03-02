@@ -1,3 +1,4 @@
 {
-	"mongoURI": "mongodb+srv://instatutor:instatutor@cluster0.nptdj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+	"mongoURI": "mongodb+srv://instatutor:instatutor@cluster0.nptdj.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+	"jwtSecret": "mysecrettoken"
 }

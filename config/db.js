@@ -5,16 +5,18 @@ const db = config.get('mongoURI');
 const connectDB = async () => {
     try {
         await mongoose.connect(db, {
-            useNewUrLParser: true,
-            useCreateIndex: true
+            useNewUrlParser: true,
+            useCreateIndex: true,
+            useFindAndModify: false,
+            useUnifiedTopology: true
         });
+
         console.log('MongoDB Connected...');
-    }
-    catch (err) {
+    } catch (err) {
         console.error(err.message);
-        //Exit process with failure
+        // Exit process with failure
         process.exit(1);
     }
 };
-module.exports = connectDB;
 
+module.exports = connectDB;
