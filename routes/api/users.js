@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
 const { check, validationResult } = require('express-validator');
+const normalize = require('normalize-url');
 const User = require('../../models/User');
-
 
 //@route GET api/users
 
@@ -15,7 +15,8 @@ const User = require('../../models/User');
 // @access  Public
 router.post('/',
     [
-        check('name', 'Name is required').notEmpty(),
+        check('name', 'Name is required').not()
+            .isEmpty(),
         check('email', 'Please include a valid email').isEmail(),
         check('password', 'Please enter a password with 6 or more characters'
         ).isLength({ min: 6 })
