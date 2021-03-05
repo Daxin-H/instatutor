@@ -1,2 +1,5 @@
 node_modules/
-.DS_Store
+config/production.json
+config/default.json
+client/build
+client/.eslintcache
