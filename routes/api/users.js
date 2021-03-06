@@ -19,7 +19,9 @@ router.post('/',
             .isEmpty(),
         check('email', 'Please include a valid email').isEmail(),
         check('password', 'Please enter a password with 6 or more characters'
-        ).isLength({ min: 6 })
+        ).isLength({ min: 6 }),
+        check('role', 'Role is required').not()
+            .isEmpty()
     ],
 
     async (req, res) => {
@@ -27,7 +29,7 @@ router.post('/',
         if (!errors.isEmpty()) {
             return res.status(400).json({ error: errors.array() });
         }
-        const { name, email, password } = req.body;
+        const { name, role, email, password } = req.body;
         try {
             let user = await User.findOne({ email });
             // See if user exists
@@ -48,6 +50,7 @@ router.post('/',
 
             user = new User({
                 name,
+                role,
                 email,
                 avatar,
                 password
@@ -81,4 +84,4 @@ router.post('/',
     }
 
 );
-module.exports = router; 
+module.exports = router;
