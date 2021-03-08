@@ -8,6 +8,8 @@ const UserSchema = new mongoose.Schema({
     role: {
         // student or tutor
         type: String,
+        enum: ['Student', 'Tutor'],
+        default: 'Student',
         required: true
     },
     email: {
