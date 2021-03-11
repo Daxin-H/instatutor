@@ -5,6 +5,11 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    role: {
+        // student or tutor
+        type: String,
+        required: true
+    },
     email: {
         type: String,
         required: true,
