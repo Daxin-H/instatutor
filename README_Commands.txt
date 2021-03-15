@@ -45,6 +45,11 @@ To run front page only (Need to cd client)
 //----------------------------------------------------------------------------------------------------
 
 Git commands: (different from github)
+Understanding the current file situation:
+	git status
+	
+Getting the updated file:
+	git pull
 
 Add all files to Git:
 	git add .
