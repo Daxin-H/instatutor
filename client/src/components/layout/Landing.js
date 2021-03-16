@@ -8,8 +8,7 @@ const Landing = () => {
           <div className="landing-inner">
             <h1 className="x-large">Instantutor</h1>
             <p className="lead">
-              Create a developer profile/portfolio, share posts and get help from
-              other developers
+              Create an account to get help or to become a tutor
             </p>
             <div className="buttons">
               <Link to="/register" className="btn btn-primary">

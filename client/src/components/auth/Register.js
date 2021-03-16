@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react'
 import axios from 'axios'
 import { Link } from "react-router-dom"
+//import { Dropdown } from 'semantic-ui-react';
 //import axios from 'axios';
 
 const Register = () => {
@@ -79,16 +80,17 @@ const Register = () => {
                         Gravatar email
                 </small>
                 </div>
+
                 <div className="form-group">
-                    <input
-                        type="text"
-                        placeholder="Role"
-                        name="role"
-                        value={role}
-                        onChange={e => onChange(e)}
-                        required
-                    />
+                <label htmlFor="role">Please choose a role:</label>
+                <select id="role" name="role" onChange={e => onChange(e)} required>
+                    <option defaultValue="" selected={true} disabled={true}></option>
+                    <option value="student">Student</option>
+                    <option value="tutor">Tutor</option>
+                    <option value="both">Both</option>
+                </select>
                 </div>
+
                 <div className="form-group">
                     <input
                         type="password"
@@ -119,3 +121,5 @@ const Register = () => {
 };
 
 export default Register;
+
+
