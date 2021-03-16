@@ -3,9 +3,10 @@ import axios from 'axios'
 import { Link } from "react-router-dom"
 import {connect} from 'react-redux'
 import {setAlert} from '../../actions/alert';
+import {register} from '../../actions/auth';
 //import axios from 'axios';
 
-const Register = (props) => {
+const Register = ({setAlert, register}) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,9 +23,10 @@ const Register = (props) => {
         e.preventDefault();
         if (password !== password2) {
             //from 'actions/alert.js/'
-            props.setAlert('Passwords do not match', 'danger');
+            setAlert('Passwords do not match', 'danger');
         }
         else {
+            register({name, email, password});
             console.log('SUCCESS');
 
             const newUser = {
@@ -65,7 +67,7 @@ const Register = (props) => {
                         name="name"
                         value={name}
                         onChange={e => onChange(e)}
-                        required
+                        //required
                     />
                 </div>
                 <div className="form-group">
@@ -75,7 +77,7 @@ const Register = (props) => {
                         name="email"
                         value={email}
                         onChange={e => onChange(e)}
-                        required
+                        //required
                     />
                     <small className="form-text">
                         This site uses Gravatar so if you want a profile image, use a
@@ -89,7 +91,7 @@ const Register = (props) => {
                         name="role"
                         value={role}
                         onChange={e => onChange(e)}
-                        required
+                        //required
                     />
                 </div>
                 <div className="form-group">
@@ -99,8 +101,8 @@ const Register = (props) => {
                         name="password"
                         value={password}
                         onChange={e => onChange(e)}
-                        required
-                        minLength="6"
+                        //required
+                        //minLength="6"
                     />
                 </div>
                 <div className="form-group">
@@ -110,8 +112,9 @@ const Register = (props) => {
                         name="password2"
                         value={password2}
                         onChange={e => onChange(e)}
-                        required
-                        minLength="6" />
+                        //required
+                        //minLength="6" 
+                        />
                 </div>
                 <input type="submit" className="btn btn-primary" value="Register" />
             </form>
@@ -121,4 +124,4 @@ const Register = (props) => {
         </Fragment>);
 };
 
-export default connect(null, {setAlert})(Register);
+export default connect(null, {setAlert, register})(Register);
