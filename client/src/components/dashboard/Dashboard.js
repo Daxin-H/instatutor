@@ -9,8 +9,5 @@ const Dashboard = props =>{
     )
 }
 
-Dashboard.PropTypes = {
-
-};
 
 export default Dashboard 
