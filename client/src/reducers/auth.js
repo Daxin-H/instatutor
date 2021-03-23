@@ -1,3 +1,4 @@
+
 import {
     REGISTER_SUCCESS,
     REGISTER_FAIL,
@@ -15,10 +16,10 @@ const initialState = {
     user: null
 }
 
-export default function(state = initialState, action) {
-    const { type, payload } = action; 
-    
-    switch(type) {
+export default function (state = initialState, action) {
+    const { type, payload } = action;
+
+    switch (type) {
         case USER_LOADED:
             return {
                 ...state,
@@ -46,7 +47,7 @@ export default function(state = initialState, action) {
                 isAuthenticated: false,
                 loading: false
             };
-        default: 
+        default:
             return state;
     }
 

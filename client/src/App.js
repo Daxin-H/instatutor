@@ -5,12 +5,15 @@ import Navbar from './components/layout/Navbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alert from './components/layout/Alert';
+import Dashboard from './components/dashboard/Dashboard';
+//Force user to log in, protact dashboard
+import PrivateRoute from './components/routing/PrivateRoute';
+
 // Redux
-import { Provider } from 'react-redux'; 
-import store from './store'; 
+import { Provider } from 'react-redux';
+import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
-import Dashboard from './components/dashboard/Dashboard';
 
 import './App.css';
 
@@ -18,29 +21,31 @@ if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
-const App = () => { 
+const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
 
   return (
-  <Provider store={store}>
-  <Router>
-    <Fragment>
-      <Navbar />
-      <Route exact path='/' component={Landing} />
-      <section className="container">
-        <Alert />
-        <Switch>
-          <Route exact path="/register" component={Register}></Route>
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/dashboard" component={Dashboard}></Route>
-        </Switch>
-      </section>
-    </Fragment>
-  </Router>
-  </Provider>
-)};
+    <Provider store={store}>
+      <Router>
+        <Fragment>
+          <Navbar />
+          <Route exact path='/' component={Landing} />
+          <section className="container">
+            <Alert />
+            <Switch>
+              <Route exact path="/register" component={Register}></Route>
+              <Route exact path="/login" component={Login}></Route>
+
+              <PrivateRoute exact path="/dashboard" component={Dashboard} />
+            </Switch>
+          </section>
+        </Fragment>
+      </Router>
+    </Provider>
+  )
+};
 
 export default App;
 
