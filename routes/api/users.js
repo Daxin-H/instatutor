@@ -56,7 +56,10 @@ router.post('/',
                 role,
                 email,
                 avatar,
-                password
+                password,
+                expertise,
+                subjects,
+                year
             });
 
             // Encrypt password by hashing
