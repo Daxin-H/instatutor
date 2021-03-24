@@ -31,6 +31,8 @@ const ProfileForm = ({
 
   useEffect(() => {
     if (!profile) getCurrentProfile();
+
+    // Upload profile to 'setFormData' if user profile existed
     if (!loading && profile) {
       const profileData = { ...initialState };
       for (const key in profile) {
@@ -63,6 +65,7 @@ const ProfileForm = ({
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+  // Decide create new profile or update by the existance of profile
   const onSubmit = e => {
     e.preventDefault();
     createProfile(formData, history, profile ? true : false);
