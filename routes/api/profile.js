@@ -37,10 +37,10 @@ router.get('/me', auth, async (req, res) => {
 // @access Public
 
 router.post('/', [auth, [
-    check('status', 'Status is required')
+    check('degree', 'Degree is required')
         .not()
         .isEmpty(),
-    check('skills', 'Skills is required')
+    check('major', 'Major is required')
         .not()
         .isEmpty(),
 ]],
@@ -51,13 +51,10 @@ router.post('/', [auth, [
         }
 
         const {
-            company,
-            website,
-            location,
             bio,
-            status,
-            githubusername,
-            skills,
+            degree,
+            major,
+            location,
             youtube,
             facebook,
             twitter,
@@ -68,16 +65,13 @@ router.post('/', [auth, [
         // Build Profile object, assign value to each property
         const profileFields = {};
         profileFields.user = req.user.id;
-        if (company) profileFields.company = company;
-        if (website) profileFields.website = website;
+        if (degree) profileFields.degree = degree;
         if (bio) profileFields.bio = bio;
-        if (status) profileFields.status = status;
         if (location) profileFields.location = location;
-        if (githubusername) profileFields.githubusername = githubusername;
 
         // Skills are input as a string, we need to seperate them into a array and delete useless ' '
-        if (skills) {
-            profileFields.skills = skills.split(',').map(skill => skill.trim());
+        if (major) {
+            profileFields.major = major.split(',').map(major => major.trim());
         }
 
         // Build social object

@@ -5,12 +5,9 @@ import { connect } from 'react-redux';
 import { createProfile, getCurrentProfile } from '../../actions/profile';
 
 const initialState = {
-  company: '',
-  website: '',
+  degree: '',
+  major: '',
   location: '',
-  status: '',
-  skills: '',
-  githubusername: '',
   bio: '',
   twitter: '',
   facebook: '',
@@ -48,12 +45,9 @@ const ProfileForm = ({
   }, [loading, getCurrentProfile, profile]);
 
   const {
-    company,
-    website,
+    degree,
+    major,
     location,
-    status,
-    skills,
-    githubusername,
     bio,
     twitter,
     facebook,
@@ -80,45 +74,31 @@ const ProfileForm = ({
       <small>* = required field</small>
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <select name="status" value={status} onChange={onChange}>
-            <option>* Select Professional Status</option>
-            <option value="Developer">Developer</option>
-            <option value="Junior Developer">Junior Developer</option>
-            <option value="Senior Developer">Senior Developer</option>
-            <option value="Manager">Manager</option>
-            <option value="Student or Learning">Student or Learning</option>
-            <option value="Instructor">Instructor or Teacher</option>
-            <option value="Intern">Intern</option>
-            <option value="Other">Other</option>
+          <select name="degree" value={degree} onChange={onChange}>
+            <option>* Select Your Degree</option>
+            <option value="High School">High School</option>
+            <option value="Undergraduate">Undergraduate</option>
+            <option value="Postgraduate">Postgraduate</option>
+            <option value="PHD">PHD</option>
           </select>
           <small className="form-text">
-            Give us an idea of where you are at in your career
+          Type your degree of study so that we can get precise matching.
           </small>
         </div>
+
         <div className="form-group">
           <input
             type="text"
-            placeholder="Company"
-            name="company"
-            value={company}
+            placeholder="* Major"
+            name="major"
+            value={major}
             onChange={onChange}
           />
           <small className="form-text">
-            Could be your own company or one you work for
+          Please tell us your major of study; Please use comma separated values (eg. MATH,CSCI,...)
           </small>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Website"
-            name="website"
-            value={website}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Could be your own or a company website
-          </small>
-        </div>
+
         <div className="form-group">
           <input
             type="text"
@@ -128,34 +108,11 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className="form-text">
-            City & state suggested (eg. Boston, MA)
+          Could you please tell us your location?
+          City & state suggested (eg. Boston, MA)
           </small>
         </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="* Skills"
-            name="skills"
-            value={skills}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            Please use comma separated values (eg. HTML,CSS,JavaScript,PHP)
-          </small>
-        </div>
-        <div className="form-group">
-          <input
-            type="text"
-            placeholder="Github Username"
-            name="githubusername"
-            value={githubusername}
-            onChange={onChange}
-          />
-          <small className="form-text">
-            If you want your latest repos and a Github link, include your
-            username
-          </small>
-        </div>
+
         <div className="form-group">
           <textarea
             placeholder="A short bio of yourself"
@@ -163,7 +120,7 @@ const ProfileForm = ({
             value={bio}
             onChange={onChange}
           />
-          <small className="form-text">Tell us a little about yourself</small>
+          <small className="form-text">Tell us a little about yourself :)</small>
         </div>
 
         <div className="my-2">
