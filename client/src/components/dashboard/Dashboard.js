@@ -6,10 +6,11 @@ import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import DashboardActions from './DashboardActions';
 import Spinner from '../layout/Spinner';
 
-import SearchBox from '../searchbar/search';
+import Searchbar from '../Search';
 import { render } from 'react-dom';
 
 const Dashboard = ({
+    SearchBox,
     getCurrentProfile,
     deleteAccount,
     auth: { user },
@@ -18,32 +19,43 @@ const Dashboard = ({
     useEffect(() => {
         getCurrentProfile();
     }, []);
-    return loading && profile === null ? <Spinner /> : <Fragment>
-        <hi className="large text-primary"> Personal page </hi>
-        <p className="lead">
-            <i className='fas fa-user '></i> Welcome {user && user.name}
-        </p>
+    return loading && profile === null ? <Spinner /> :
+        <Fragment>
 
-        {profile !== null ? (
-            <Fragment>
-                <DashboardActions />
 
-                <div className="my-2">
-                    <button className="btn btn-danger" onClick={() => deleteAccount()}>
-                        <i className="fas fa-user-minus"></i>
+
+            <hi className="large text-primary"> Personal page </hi>
+            <p className="lead">
+                <i className='fas fa-user '></i> Welcome {user && user.name}
+            </p>
+
+            {profile !== null ? (
+                <Fragment>
+                    <DashboardActions />
+
+                    <div className="my-2">
+                        <button className="btn btn-danger" onClick={() => deleteAccount()}>
+                            <i className="fas fa-user-minus"></i>
                         Delete My Account
                     </button>
-                </div>
-            </Fragment>
-        ) : (
-            <Fragment>
-                <p> You have not yet setup a profile, please add some info</p>
-                <Link to='/create-profile' className='btn btn-primary my-1'>
-                    Create Profile
+                    </div>
+
+                </Fragment>
+            ) : (
+                <Fragment>
+                    <p> You have not yet setup a profile, please add some info</p>
+                    <Link to='/create-profile' className='btn btn-primary my-1'>
+                        Create Profile
                 </Link>
-            </Fragment>
-        )}
-    </Fragment>
+
+                </Fragment>
+
+
+
+            )}
+        </Fragment>
+
+
 
 
 };

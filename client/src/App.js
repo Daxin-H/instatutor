@@ -16,11 +16,23 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
-import './App.css';
+//search
+import Search from './components/Search';
 
+import './App.css';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
+
+class SearchContainer extends Component {
+  state = {
+    major: [],
+    question: [],
+    searchField: '',
+    inputvalue: ''
+  }
+}
+
 
 const App = () => {
   useEffect(() => {
@@ -39,7 +51,11 @@ const App = () => {
               <Route exact path="/register" component={Register}></Route>
               <Route exact path="/login" component={Login}></Route>
 
+
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+
+              <PrivateRoute path="/Search" component={Search} />
+
               <PrivateRoute exact path="/create-profile" component={ProfileForm} />
               <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
             </Switch>
@@ -48,7 +64,15 @@ const App = () => {
       </Router>
     </Provider>
   )
+
 };
+
+
 
 export default App;
 
+///<div className="App">
+///  <h1>Searching part</h1>
+///  <SearchBar placeholder="Enter country name ..." handleChange={this.handleChange} />
+///  <Questionlist stats={filteredQuestions} />
+///</div>

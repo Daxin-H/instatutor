@@ -1,10 +1,13 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 
 const DashboardActions = () => {
     return (
+
         <div class="dash-buttons">
+
+            <Link to="/Search" class="btn btn-light"> Search bar </Link>
             <Link to="/edit-profile" class="btn btn-light"
             ><i class="fas fa-user-circle text-primary"></i> Edit Profile</Link>
 
