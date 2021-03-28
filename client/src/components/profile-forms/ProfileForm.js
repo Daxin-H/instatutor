@@ -7,6 +7,7 @@ import { createProfile, getCurrentProfile } from '../../actions/profile';
 const initialState = {
   degree: '',
   major: '',
+  role: '',
   location: '',
   bio: '',
   twitter: '',
@@ -47,6 +48,7 @@ const ProfileForm = ({
   const {
     degree,
     major,
+    role,
     location,
     bio,
     twitter,
@@ -72,6 +74,7 @@ const ProfileForm = ({
         <i className="fas fa-user" /> Add some changes to your profile
       </p>
       <small>* = required field</small>
+
       <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
           <select name="degree" value={degree} onChange={onChange}>
@@ -82,7 +85,7 @@ const ProfileForm = ({
             <option value="PHD">PHD</option>
           </select>
           <small className="form-text">
-          Type your degree of study so that we can get precise matching.
+            Type your degree of study so that we can get precise matching.
           </small>
         </div>
 
@@ -95,7 +98,20 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className="form-text">
-          Please tell us your major of study; Please use comma separated values (eg. MATH,CSCI,...)
+            Please tell us your major of study; Please use comma separated values (eg. MATH,CSCI,...)
+          </small>
+        </div>
+
+        <div className="form-group">
+          <input
+            type="text"
+            placeholder="*Be a student or tutor"
+            name="Role"
+            value={role}
+            onChange={onChange}
+          />
+          <small className="form-text">
+            Please tell us your choice of the role
           </small>
         </div>
 
@@ -108,8 +124,8 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className="form-text">
-          Could you please tell us your location?
-          City & state suggested (eg. Boston, MA)
+            Could you please tell us your location?
+            City & state suggested (eg. Boston, MA)
           </small>
         </div>
 

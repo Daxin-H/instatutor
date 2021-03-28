@@ -6,41 +6,46 @@ import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import DashboardActions from './DashboardActions';
 import Spinner from '../layout/Spinner';
 
-const Dashboard = ({ 
-    getCurrentProfile, 
+import SearchBox from '../searchbar/search';
+import { render } from 'react-dom';
+
+const Dashboard = ({
+    getCurrentProfile,
     deleteAccount,
-    auth: {user}, 
+    auth: { user },
     profile: { profile, loading } }) => {
 
     useEffect(() => {
         getCurrentProfile();
     }, []);
-    return loading&&profile === null ? <Spinner />: <Fragment>
-        <hi className = "large text-primary"> Dashboard </hi>
-        <p className = "lead"> 
-            <i className = 'fas fa-user '></i> Welcome {user && user.name}
+    return loading && profile === null ? <Spinner /> : <Fragment>
+        <hi className="large text-primary"> Personal page </hi>
+        <p className="lead">
+            <i className='fas fa-user '></i> Welcome {user && user.name}
         </p>
 
         {profile !== null ? (
-            <Fragment> 
+            <Fragment>
                 <DashboardActions />
 
-                <div className = "my-2">
-                    <button className = "btn btn-danger" onClick={()=>deleteAccount()}>
-                        <i className = "fas fa-user-minus"></i>
+                <div className="my-2">
+                    <button className="btn btn-danger" onClick={() => deleteAccount()}>
+                        <i className="fas fa-user-minus"></i>
                         Delete My Account
                     </button>
                 </div>
             </Fragment>
         ) : (
-            <Fragment> 
+            <Fragment>
                 <p> You have not yet setup a profile, please add some info</p>
-                <Link to = '/create-profile' className = 'btn btn-primary my-1'>
+                <Link to='/create-profile' className='btn btn-primary my-1'>
                     Create Profile
-                </Link>     
+                </Link>
             </Fragment>
-        ) }
+        )}
     </Fragment>
+
+
 };
 
 Dashboard.propTypes = {
@@ -56,9 +61,9 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(
-    mapStateToProps, { 
-        getCurrentProfile,
-        deleteAccount
-    })(
+    mapStateToProps, {
+    getCurrentProfile,
+    deleteAccount
+})(
     Dashboard
 );

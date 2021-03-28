@@ -17,9 +17,10 @@ router.get('/me', auth, async (req, res) => {
     try {
         const profile = await Profile.findOne({ user: req.user.id }).populate(
             'user',
+            'role',
             ['name', 'avatar']
         );
-        
+
         // Show Error when empty profile!
         if (!profile) {
             return res.status(400).json({ msg: 'There is no profile for this user' });
@@ -43,6 +44,9 @@ router.post('/', [auth, [
     check('major', 'Major is required')
         .not()
         .isEmpty(),
+    check('role', 'Role is required')
+        .not()
+        .isEmpty(),
 ]],
     async (req, res) => {
         const errors = validationResult(req);
@@ -54,6 +58,7 @@ router.post('/', [auth, [
             bio,
             degree,
             major,
+            role,
             location,
             youtube,
             facebook,
@@ -68,6 +73,7 @@ router.post('/', [auth, [
         if (degree) profileFields.degree = degree;
         if (bio) profileFields.bio = bio;
         if (location) profileFields.location = location;
+        if (role) profileFields.role = role;
 
         // Skills are input as a string, we need to seperate them into a array and delete useless ' '
         if (major) {
@@ -169,6 +175,73 @@ router.delete('/', auth, async (req, res) => {
     }
 })
 
+
+// @route: PUT api/profile/role
+// @desc:  Add profile role
+// @access Private
+router.put('/role', [auth,
+    check('role', 'Role is required').not().isEmpty(),
+],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+
+        const {
+            role
+        } = req.body;
+
+        const newExp = {
+            role
+        }
+
+        // Get new role and put it into the array of role.
+        try {
+            const profile = await Profile.findOne({ user: req.user.id });
+
+            profile.role.unshift(newExp);
+
+            await profile.save();
+
+            res.json(profile);
+        }
+        catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+    });
+
+// @route: DELETE api/profile/role/:exp:id
+// @desc:  Delete an role by ID
+// @access Private
+router.delete('/role/:exp_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+
+        // Get the index of role we want to remove
+        const removeIndex = profile.role
+            .map(item => item.id)
+            .indexOf(req.params.exp_id);
+
+        profile.role.splice(removeIndex, 1);
+
+        await profile.save();
+
+        res.json(profile);
+
+    }
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
+
+
+
 // @route: PUT api/profile/experience
 // @desc:  Add profile experience
 // @access Private
@@ -255,8 +328,10 @@ router.put('/education', [auth,
         .not().isEmpty(),
     check('from', 'From date is required')
         .not().isEmpty(),
+
     check('fieldofstudy', 'Field of study is required')
         .not().isEmpty()
+
 ],
     async (req, res) => {
         const errors = validationResult(req);
