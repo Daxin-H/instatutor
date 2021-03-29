@@ -79,6 +79,7 @@ const ProfileForm = ({
         <div className="form-group">
           <select name="degree" value={degree} onChange={onChange}>
             <option>* Select Your Degree</option>
+            <option value="K-12">K-12</option>
             <option value="High School">High School</option>
             <option value="Undergraduate">Undergraduate</option>
             <option value="Postgraduate">Postgraduate</option>
@@ -98,7 +99,7 @@ const ProfileForm = ({
             onChange={onChange}
           />
           <small className="form-text">
-            Please tell us your major of study; Please use comma separated values (eg. MATH,CSCI,...)
+            Please tell us your major of study; Please use comma separated values (eg. MATH,CSCI,...) and enter 'School' if you are a school student.
           </small>
         </div>
 
