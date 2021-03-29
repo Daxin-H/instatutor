@@ -106,7 +106,7 @@ const ProfileForm = ({
           <input
             type="text"
             placeholder="*Be a student or tutor"
-            name="Role"
+            name="role"
             value={role}
             onChange={onChange}
           />
