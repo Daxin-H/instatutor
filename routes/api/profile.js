@@ -49,8 +49,17 @@ router.post('/', [auth, [
         }
 
         const {
+<<<<<<< Updated upstream
             company,
             website,
+=======
+            bio,
+            degree,
+            major,
+            role,
+            expertise,
+            subjects,
+>>>>>>> Stashed changes
             location,
             bio,
             status,
@@ -71,7 +80,13 @@ router.post('/', [auth, [
         if (bio) profileFields.bio = bio;
         if (status) profileFields.status = status;
         if (location) profileFields.location = location;
+<<<<<<< Updated upstream
         if (githubusername) profileFields.githubusername = githubusername;
+=======
+        if (role) profileFields.role = role;
+        if (expertise) profileFields.expertise = expertise;
+        if (subjects) profileFields.subjects = subjects;
+>>>>>>> Stashed changes
 
         // Skills are input as a string, we need to seperate them into a array and delete useless ' '
         if (skills) {
