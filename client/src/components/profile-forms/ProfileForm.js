@@ -9,6 +9,8 @@ const initialState = {
   major: '',
   role: '',
   location: '',
+  expertise: '',
+  subjects: '',
   bio: '',
   twitter: '',
   facebook: '',
@@ -50,6 +52,8 @@ const ProfileForm = ({
     major,
     role,
     location,
+    expertise,
+    subjects,
     bio,
     twitter,
     facebook,
@@ -103,18 +107,65 @@ const ProfileForm = ({
           </small>
         </div>
 
+        <form className="form" onSubmit={onSubmit}>
         <div className="form-group">
-          <input
-            type="text"
-            placeholder="*Be a student or tutor"
-            name="role"
-            value={role}
-            onChange={onChange}
-          />
+          <select name="role" value={role} onChange={onChange}>
+            <option>* Select Your Role</option>
+            <option value="Student">Student</option>
+            <option value="Tutor">Tutor</option>
+            <option value="Both">Both</option>
+          </select>
           <small className="form-text">
-            Please tell us your choice of the role
+            Select your role (Student, Tutor, or Both!)
           </small>
         </div>
+        </form>
+
+        {formData.role == 'Tutor' && (
+          
+          <div className="form-group">
+          <select name="expertise" value={expertise} onChange={onChange}>
+          <option>Select Area of Expertise</option>
+          <option value="Science">Science</option>
+          <option value="Math">Math</option>
+          <option value="English">English</option>
+          </select>
+          </div>
+          
+      )}
+
+        {formData.role == 'Student' && (
+          <div className="form-group">
+          <select name="subjects" value={subjects} onChange={onChange}>
+            <option>What subjects do you need help in?</option>
+            <option value="Science">Science</option>
+            <option value="Math">Math</option>
+            <option value="English">English</option>
+          </select>
+          </div>
+      )}
+
+        {formData.role == 'Both' && (
+          <React.Fragment>
+          <div className="form-group">
+          <select name="expertise" value={expertise} onChange={onChange}>
+            <option>Select Area of Expertise</option>
+            <option value="Science">Science</option>
+            <option value="Math">Math</option>
+            <option value="English">English</option>
+          </select>
+          </div>
+
+          <div className="form-group">
+          <select name="subjects" value={subjects} onChange={onChange}>
+            <option>What subjects do you need help in?</option>
+            <option value="Science">Science</option>
+            <option value="Math">Math</option>
+            <option value="English">English</option>
+          </select>
+          </div>
+        </React.Fragment>         
+      )}
 
         <div className="form-group">
           <input

@@ -60,6 +60,8 @@ router.post('/', [auth, [
             major,
             role,
             location,
+            expertise,
+            subjects,
             youtube,
             facebook,
             twitter,
@@ -74,6 +76,8 @@ router.post('/', [auth, [
         if (bio) profileFields.bio = bio;
         if (location) profileFields.location = location;
         if (role) profileFields.role = role;
+        if (expertise) profileFields.expertise = expertise;
+        if (subjects) profileFields.subjects = subjects;
 
         // Skills are input as a string, we need to seperate them into a array and delete useless ' '
         if (major) {
