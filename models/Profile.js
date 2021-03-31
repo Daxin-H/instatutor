@@ -18,6 +18,12 @@ const ProfileSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
+    expertise: {
+        type: [String]
+    },
+    subjects: {
+        type: [String]
+    },
     location: {
         type: String
     },

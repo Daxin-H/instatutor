@@ -426,4 +426,11 @@ router.get('/github/:username', async (req, res) => {
     }
 });
 
+{/*
+// @route: GET api/profile/expertise/:username
+// @desc: Get users which have certain expertise
+// @access Public
+router.get('')
+*/}
+
 module.exports = router;

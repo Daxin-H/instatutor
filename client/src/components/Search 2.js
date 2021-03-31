@@ -16,7 +16,7 @@ const Search = () => {
             <div className="searchbar">
                 <input
                     type="text"
-                    placeholder="Search For Tutors!"
+                    placeholder="Searching"
                     value={img}
                     onChange={InputEvent} />
                 <Source name={img} />
