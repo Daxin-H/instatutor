@@ -10,6 +10,7 @@ const initialState = {
   role: '',
   location: '',
   expertise: '',
+  classes: '',
   subjects: '',
   bio: '',
   twitter: '',
@@ -53,6 +54,7 @@ const ProfileForm = ({
     role,
     location,
     expertise,
+    classes,
     subjects,
     bio,
     twitter,
@@ -122,16 +124,29 @@ const ProfileForm = ({
         </form>
 
         {formData.role == 'Tutor' && (
-          
+          <React.Fragment>
           <div className="form-group">
           <select name="expertise" value={expertise} onChange={onChange}>
-          <option>Select Area of Expertise</option>
-          <option value="Science">Science</option>
-          <option value="Math">Math</option>
-          <option value="English">English</option>
+            <option>Select Area of Expertise</option>
+            <option value="Science">Science</option>
+            <option value="Math">Math</option>
+            <option value="English">English</option>
           </select>
           </div>
-          
+  
+          <div className="form-group">
+          <input
+          type="text"
+          placeholder="Classes that you are able to help"
+          name="classes"
+          value={classes}
+          onChange={onChange}
+        />
+        <small className="form-text">
+          Please put the full name of the class and use comma separated values (eg. data structures, linear algebra).
+        </small>
+        </div>  
+        </React.Fragment>
       )}
 
         {formData.role == 'Student' && (
@@ -147,7 +162,7 @@ const ProfileForm = ({
 
         {formData.role == 'Both' && (
           <React.Fragment>
-          <div className="form-group">
+                    <div className="form-group">
           <select name="expertise" value={expertise} onChange={onChange}>
             <option>Select Area of Expertise</option>
             <option value="Science">Science</option>
@@ -155,6 +170,19 @@ const ProfileForm = ({
             <option value="English">English</option>
           </select>
           </div>
+  
+          <div className="form-group">
+          <input
+          type="text"
+          placeholder="Classes that you are able to help"
+          name="classes"
+          value={classes}
+          onChange={onChange}
+        />
+        <small className="form-text">
+          Please put the full name of the class and use comma separated values (eg. data structures, linear algebra).
+        </small>
+        </div>
 
           <div className="form-group">
           <select name="subjects" value={subjects} onChange={onChange}>

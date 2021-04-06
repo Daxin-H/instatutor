@@ -21,6 +21,9 @@ const ProfileSchema = new mongoose.Schema({
     expertise: {
         type: [String]
     },
+    classes: {
+        type: [String]
+    },
     subjects: {
         type: [String]
     },
