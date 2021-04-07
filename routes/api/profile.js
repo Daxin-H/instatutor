@@ -79,9 +79,9 @@ router.post('/', [auth, [
         if (expertise) profileFields.expertise = expertise;
         if (subjects) profileFields.subjects = subjects;
 
-        // Skills are input as a string, we need to seperate them into a array and delete useless ' '
+        // Majors are input as a string, we need to seperate them into a array and delete useless ' '
         if (major) {
-            profileFields.major = major.split(',').map(major => major.trim());
+            profileFields.major = (major + '').split(',').map(major => major.trim());
         }
 
         // Build social object
@@ -426,11 +426,11 @@ router.get('/github/:username', async (req, res) => {
     }
 });
 
-{/*
+/*
 // @route: GET api/profile/expertise/:username
 // @desc: Get users which have certain expertise
 // @access Public
 router.get('')
-*/}
+*/
 
 module.exports = router;

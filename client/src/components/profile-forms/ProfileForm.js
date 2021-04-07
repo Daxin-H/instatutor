@@ -216,7 +216,7 @@ const ProfileForm = ({
             value={bio}
             onChange={onChange}
           />
-          <small className="form-text">Tell us a little about yourself :)</small>
+          <small className="form-text">Tell us a little about yourself </small>
         </div>
 
         <div className="my-2">
