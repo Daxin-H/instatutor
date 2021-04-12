@@ -366,4 +366,26 @@ router.get('/github/:username', async (req, res) => {
     }
 });
 
+<<<<<<< Updated upstream
+=======
+// @route: GET api/profile/expertise/:username
+// @desc: Get users which have certain expertise
+// @access Public
+router.get('/expertise', auth, async (req, res) => {
+    try {
+        const search = req.body.query
+        const profiles = await Profile.find({expertise: search}).populate('user', ['name', 'avatar']);
+        res.json(profiles);
+    }
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+        
+
+
+});
+
+
+>>>>>>> Stashed changes
 module.exports = router;

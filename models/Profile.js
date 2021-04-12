@@ -21,10 +21,10 @@ const ProfileSchema = new mongoose.Schema({
         required: true
     },
     expertise: {
-        type: [String]
+        type: String
     },
     subjects: {
-        type: [String]
+        type: String
     },
     location: {
         type: String
