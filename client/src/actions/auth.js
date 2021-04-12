@@ -6,9 +6,6 @@ import{
 }from './types'
 import { setAlert } from './alert';
 
-<<<<<<< Updated upstream
-export const register = ({name, email, password}) => async dispatch => {
-=======
 // Load User
 export const loadUser = () => async dispatch => {
     if (localStorage.token) {
@@ -32,7 +29,6 @@ export const loadUser = () => async dispatch => {
 
 // Register User
 export const register = ({ name, email, role, password, expertise, subjects, year }) => async dispatch => {
->>>>>>> Stashed changes
     const config = {
         headers: {
             'Content-Type': 'application/json'
@@ -40,11 +36,7 @@ export const register = ({ name, email, role, password, expertise, subjects, yea
     }
 
 
-<<<<<<< Updated upstream
-const body = JSON.stringify({name, email, password});
-=======
     const body = JSON.stringify({ name, email, role, password, expertise, subjects, year }); 
->>>>>>> Stashed changes
 
     try{
         const res = await axios.post('api/users', body, config);

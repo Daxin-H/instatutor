@@ -6,13 +6,9 @@ import {setAlert} from '../../actions/alert';
 import {register} from '../../actions/auth';
 //import axios from 'axios';
 
-<<<<<<< Updated upstream
-const Register = ({setAlert, register}) => {
-=======
 
 
 const Register = ({ setAlert, register, isAuthenticated }) => {
->>>>>>> Stashed changes
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -32,40 +28,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     const onSubmit = async e => {
         e.preventDefault();
         if (password !== password2) {
-<<<<<<< Updated upstream
-            //from 'actions/alert.js/'
-            setAlert('Passwords do not match', 'danger');
-        }
-        else {
-            register({name, email, password});
-            console.log('SUCCESS');
-
-            const newUser = {
-                name,
-                email,
-                password,
-                role
-            };
-
-            try {
-                const config = {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                };
-
-                const body = JSON.stringify(newUser);
-                const res = await axios.post('/api/users', body, config);
-                console.log(res.data);
-            } catch (err) {
-                console.error(err.response.data);
-            }
-=======
             setAlert('passwords do not match', 'danger');
 
         }else {
             register({ name, email, role, password, expertise, subjects, year });
->>>>>>> Stashed changes
         }
     };
 
@@ -101,22 +67,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         Gravatar email
                 </small>
                 </div>
-<<<<<<< Updated upstream
-                <div className="form-group">
-                    <input
-                        type="text"
-                        placeholder="Role"
-                        name="role"
-                        value={role}
-                        onChange={e => onChange(e)}
-                        //required
-                    />
-                </div>
-=======
 
                 
 
->>>>>>> Stashed changes
                 <div className="form-group">
                     <input
                         type="password"

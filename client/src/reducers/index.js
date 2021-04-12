@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-import {combineReducers} from 'redux'
-import alert from './alert'
-export default combineReducers({});
-=======
 import { combineReducers } from 'redux';
 import alert from './alert';
 import auth from './auth';
@@ -17,4 +12,3 @@ export default combineReducers({
     search
 
 });
->>>>>>> Stashed changes
