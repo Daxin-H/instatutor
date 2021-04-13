@@ -27,6 +27,8 @@ class SearchContainer extends Component {
 }
 
 
+
+
 const App = () => {
   useEffect(() => {
     store.dispatch(loadUser());

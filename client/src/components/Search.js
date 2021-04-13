@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Source from './Source'
+import formData from './profile-forms/ProfileForm'
+
 
 const Search = () => {
     const [img, setImg] = useState("");
@@ -11,8 +13,10 @@ const Search = () => {
         console.log(data);
         setImg(data);
     };
+
     return (
         <>
+            {(formData.role=='Student'||'Both') && (
             <div className="searchbar">
                 <input
                     type="text"
@@ -21,6 +25,9 @@ const Search = () => {
                     onChange={InputEvent} />
                 <Source name={img} />
             </div>
+            )}
+
+          
         </>
     )
 };
