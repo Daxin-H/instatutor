@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Source from './Source'
 import formData from './profile-forms/ProfileForm'
+import SearchContainer from '../App';
 
 
 const Search = () => {
@@ -13,7 +14,7 @@ const Search = () => {
         console.log(data);
         setImg(data);
     };
-
+    
     return (
         <>
             {(formData.role=='Student'||'Both') && (
