@@ -13,18 +13,73 @@ import setAuthToken from './utils/setAuthToken';
 
 
 import './App.css';
+import formData from './components/profile-forms/ProfileForm';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
 class SearchContainer extends Component {
-  state = {
-    major: [],
-    question: [],
-    searchField: '',
-    inputvalue: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      courses: [],
+      course: ""
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmitCourse = this.handleSubmitCourse.bind(this);
+  }
+
+  handleSubmit(event) {
+    alert("The course that you need help with is: "+this.state.course);
+    event.preventDefault();
+  }
+
+  handleChange = event => {
+    this.setState({value:event.target.value});
+  };
+
+  handleChange = event => {
+    this.setState({course:event.target.value});
+  }; 
+
+  getUnique(arr,comp) {
+    const unique = arr.map(e=>e[comp])
+                      .map((e,i,final) => final.indexOf(e) === i && i)
+                      .filter(e => arr[e])
+                      .map(e=>arr[e]);
+    return unique;
+  }
+
+  componentDidMount() {
+    const courses = require("./courses.json");
+    this.setState({courses: courses});
+  }
+
+  render() {
+    const uniqueCourse = this.getUnique(this.state.courses, "tag");
+    const courses = this.state.courses;
+
+    return (
+      
+      <div>
+        <form onSubmit={this.handleSubmit}>
+            {(formData.role=='Student'||'Both') && (
+            <div className="searchbar">
+                <input
+                    type="text"
+                    placeholder="Search For Tutors!"
+                    value="course"
+                    onChange={InputEvent} />
+            </div>
+            )}
+        </form>
+      </div>
+      
+    )
   }
 }
+
+
 
 
 const App = () => {
