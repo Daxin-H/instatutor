@@ -433,4 +433,19 @@ router.get('/github/:username', async (req, res) => {
 router.get('')
 */
 
+router.get('/expertise', auth, async (req, res) => {
+    try {
+        const search = req.body.query
+        const profiles = await Profile.find({expertise: search}).populate('user', ['name', 'avatar']);
+        res.json(profiles);
+    }
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+        
+
+
+});
+
 module.exports = router;
