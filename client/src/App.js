@@ -37,14 +37,12 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          <Route exact path='/' component={Landing} />
-          <Route component={Routes} />
-
+            <Route exact path="/" component={Landing} />
+            <Route component={Routes} />
         </Fragment>
       </Router>
     </Provider>
-  )
-
+  );
 };
 
 export default App;

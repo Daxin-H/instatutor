@@ -9,7 +9,6 @@ const initialState = {
   major: '',
   role: '',
   location: '',
-  expertise: '',
   classes: '',
   subjects: '',
   bio: '',
@@ -53,7 +52,6 @@ const ProfileForm = ({
     major,
     role,
     location,
-    expertise,
     classes,
     subjects,
     bio,
@@ -122,78 +120,6 @@ const ProfileForm = ({
           </small>
         </div>
         </form>
-
-        {formData.role == 'Tutor' && (
-          <React.Fragment>
-          <div className="form-group">
-          <select name="expertise" value={expertise} onChange={onChange}>
-            <option>Select Area of Expertise</option>
-            <option value="Science">Science</option>
-            <option value="Math">Math</option>
-            <option value="English">English</option>
-          </select>
-          </div>
-  
-          <div className="form-group">
-          <input
-          type="text"
-          placeholder="Classes that you are able to help"
-          name="classes"
-          value={classes}
-          onChange={onChange}
-        />
-        <small className="form-text">
-          Please put the full name of the class and use comma separated values (eg. data structures, linear algebra).
-        </small>
-        </div>  
-        </React.Fragment>
-      )}
-
-        {formData.role == 'Student' && (
-          <div className="form-group">
-          <select name="subjects" value={subjects} onChange={onChange}>
-            <option>What subjects do you need help in?</option>
-            <option value="Science">Science</option>
-            <option value="Math">Math</option>
-            <option value="English">English</option>
-          </select>
-          </div>
-      )}
-
-        {formData.role == 'Both' && (
-          <React.Fragment>
-                    <div className="form-group">
-          <select name="expertise" value={expertise} onChange={onChange}>
-            <option>Select Area of Expertise</option>
-            <option value="Science">Science</option>
-            <option value="Math">Math</option>
-            <option value="English">English</option>
-          </select>
-          </div>
-  
-          <div className="form-group">
-          <input
-          type="text"
-          placeholder="Classes that you are able to help"
-          name="classes"
-          value={classes}
-          onChange={onChange}
-        />
-        <small className="form-text">
-          Please put the full name of the class and use comma separated values (eg. data structures, linear algebra).
-        </small>
-        </div>
-
-          <div className="form-group">
-          <select name="subjects" value={subjects} onChange={onChange}>
-            <option>What subjects do you need help in?</option>
-            <option value="Science">Science</option>
-            <option value="Math">Math</option>
-            <option value="English">English</option>
-          </select>
-          </div>
-        </React.Fragment>         
-      )}
 
         <div className="form-group">
           <input
