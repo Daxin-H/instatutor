@@ -12,4 +12,4 @@ https://drive.google.com/drive/folders/1e1VJH_k9VLQH7QrlELsNV1ljwsdtFZCG?usp=sha
 
 # How to run the App
 Download the source code from the repository and
-in the command line enter "npm run dev"
+in the command line enter 'npm run dev'
