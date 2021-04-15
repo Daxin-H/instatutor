@@ -2,7 +2,7 @@
 Welcome to Instantutor!
 
 Instantutor is a Peer-to-Peer system that allows students to connect with educators/tutors/people
-with specific skills. 
+with specific skills to maximize resource utilization across a campus.
 
 The development of this project was motivated by the significant rise in demand of 
 one-on-one tutoring during the Covid-19 pandemic.
