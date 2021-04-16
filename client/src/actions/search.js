@@ -15,8 +15,8 @@ export const getTutors = (query) => async (dispatch) => {
             }
         }
 
-        const body = JSON.stringify(query)
-        console.log("Body: " + "body")
+        const body = JSON.stringify(query);
+        console.log("Body: " + body);
 
         const res = await axios.get('/api/profile/expertise', body, config);
         

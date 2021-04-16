@@ -435,7 +435,8 @@ router.get('')
 
 router.get('/expertise', auth, async (req, res) => {
     try {
-        const search = req.body.query
+        console.log("Made it")
+        const search = req.body
         const profiles = await Profile.find({expertise: search}).populate('user', ['name', 'avatar']);
         res.json(profiles);
     }
