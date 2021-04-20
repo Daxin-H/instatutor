@@ -4,6 +4,7 @@ import Landing from './components/layout/Landing';
 import Navbar from './components/layout/Navbar';
 import Routes from './components/routing/Routes';
 import { LOGOUT } from './actions/types';
+import Search from './components/Search';
 
 // Redux
 import { Provider } from 'react-redux';
@@ -23,7 +24,9 @@ class SearchContainer extends Component {
     super(props);
     this.state = {
       courses: [],
-      course: ""
+      course: '',
+      stats: [],
+      searchField:''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleSubmitCourse = this.handleSubmitCourse.bind(this);
@@ -58,10 +61,14 @@ class SearchContainer extends Component {
   render() {
     const uniqueCourse = this.getUnique(this.state.courses, "tag");
     const courses = this.state.courses;
+    const {stats,searchField} = this.state
+    const filteredCourses = stats.filter(course => (
+      course.Course.toLowerCase().include(searchField.toLowerCase())
+    ))
 
     return (
-      
-      <div>
+        <div>
+        <Search placeholder="Search for tutors!" handleChange={(e) => this.setState({searchField:e.target.value})}/>
         <form onSubmit={this.handleSubmit}>
             {(formData.role=='Student'||'Both') && (
             <div className="searchbar">
@@ -73,8 +80,7 @@ class SearchContainer extends Component {
             </div>
             )}
         </form>
-      </div>
-      
+        </div>
     )
   }
 }

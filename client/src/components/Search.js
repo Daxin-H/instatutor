@@ -7,7 +7,7 @@ import formData from './profile-forms/ProfileForm'
 import SearchContainer from '../App';
 
 
-const Search = () => {
+const Search = (props) => {
     const [img, setImg] = useState("");
     const InputEvent = (event) => {
         const data = event.target.value;
@@ -21,9 +21,9 @@ const Search = () => {
             <div className="searchbar">
                 <input
                     type="text"
-                    placeholder="Search For Tutors!"
+                    placeholder="Search for tutors!"
                     value={img}
-                    onChange={InputEvent} />
+                    onChange={props.handleChange} />
                 <Source name={img} />
             </div>
             )}
