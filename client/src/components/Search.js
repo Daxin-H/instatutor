@@ -23,7 +23,7 @@ const Search = (props) => {
                     type="text"
                     placeholder="Search for tutors!"
                     value={img}
-                    onChange={props.handleChange} />
+                    onChange={InputEvent} />
                 <Source name={img} />
             </div>
             )}

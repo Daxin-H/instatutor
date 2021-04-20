@@ -24,7 +24,6 @@ class SearchContainer extends Component {
     super(props);
     this.state = {
       courses: [],
-      course: '',
       stats: [],
       searchField:''
     };
@@ -41,26 +40,12 @@ class SearchContainer extends Component {
     this.setState({value:event.target.value});
   };
 
-  handleChange = event => {
-    this.setState({course:event.target.value});
-  }; 
-
-  getUnique(arr,comp) {
-    const unique = arr.map(e=>e[comp])
-                      .map((e,i,final) => final.indexOf(e) === i && i)
-                      .filter(e => arr[e])
-                      .map(e=>arr[e]);
-    return unique;
-  }
-
   componentDidMount() {
     const courses = require("./courses.json");
     this.setState({courses: courses});
   }
 
   render() {
-    const uniqueCourse = this.getUnique(this.state.courses, "tag");
-    const courses = this.state.courses;
     const {stats,searchField} = this.state
     const filteredCourses = stats.filter(course => (
       course.Course.toLowerCase().include(searchField.toLowerCase())
@@ -68,7 +53,7 @@ class SearchContainer extends Component {
 
     return (
         <div>
-        <Search placeholder="Search for tutors!" handleChange={(e) => this.setState({searchField:e.target.value})}/>
+        <Search placeholder="Search for tutors!" />
         <form onSubmit={this.handleSubmit}>
             {(formData.role=='Student'||'Both') && (
             <div className="searchbar">

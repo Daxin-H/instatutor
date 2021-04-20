@@ -7,11 +7,10 @@ import { addExpertise } from '../../actions/profile';
 const AddExpertise = ({ addExpertise, history })  => {
     const [formData, setFormData] = useState({
         area: '',
-        degree: '',
         description: '',
         relatedCourses: ''
     });
-    const { area, degree, description, relatedCourses} = formData;
+    const { area, description, relatedCourses} = formData;
 
     const onChange = e =>
       setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,15 +38,6 @@ const AddExpertise = ({ addExpertise, history })  => {
               onChange={onChange}
               required
             />
-          </div>
-          <div className="form-group">
-            <select name="degree" value={degree} onChange={onChange}>
-              <option>* Select Your Degree</option>
-              <option value="Undergraduate">Undergraduate</option>
-              <option value="Postgraduate">Postgraduate</option>
-              <option value="PHD">PHD</option>
-              <option value="Worked">Worked</option>
-            </select>
           </div>
           <div className="form-group">
           <input
