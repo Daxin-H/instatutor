@@ -6,17 +6,15 @@ const ProfileSchema = new mongoose.Schema({
         ref: 'user'
     },
 
-    company: {
-        type: String
-    },
-    website: {
-        type: String
-    },
-    status: {
+    degree: {
         type: String,
         required: true
     },
-    skills: {
+    role: {
+        type: String,
+        required: true
+    },
+    major: {
         type: [String],
         required: true
     },
@@ -25,9 +23,6 @@ const ProfileSchema = new mongoose.Schema({
     },
     bio: {
         type: String
-    },
-    githubusername: {
-        type:String
     },
 
     experience: [
@@ -84,6 +79,22 @@ const ProfileSchema = new mongoose.Schema({
             current: {
                 type: Boolean,
                 default: false
+            },
+            description:{
+                type:String
+            }
+        }
+    ],
+
+    expertise: [
+        {
+            area: {
+                type: String,
+                required: true
+            },
+            relatedCourses: {
+                type: [String],
+                required: true
             },
             description:{
                 type:String
