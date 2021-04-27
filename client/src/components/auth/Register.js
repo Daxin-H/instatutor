@@ -62,7 +62,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                         Gravatar email
                 </small>
                 </div>
-
+                {/*
                 <div className="form-group">
                 <label htmlFor="role">Please choose a role:</label>
                 <select id="role" name="role" onChange={e => onChange(e)}>
@@ -72,7 +72,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
                     <option value="both">Both</option>
                 </select>
                 </div>
-
+                */}
                 <div className="form-group">
                     <input
                         type="password"
