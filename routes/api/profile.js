@@ -60,8 +60,6 @@ router.post('/', [auth, [
             major,
             role,
             location,
-            expertise,
-            subjects,
             youtube,
             facebook,
             twitter,
@@ -76,12 +74,10 @@ router.post('/', [auth, [
         if (bio) profileFields.bio = bio;
         if (location) profileFields.location = location;
         if (role) profileFields.role = role;
-        if (expertise) profileFields.expertise = expertise;
-        if (subjects) profileFields.subjects = subjects;
 
-        // Skills are input as a string, we need to seperate them into a array and delete useless ' '
+        // Majors are input as a string, we need to seperate them into a array and delete useless ' '
         if (major) {
-            profileFields.major = major.split(',').map(major => major.trim());
+            profileFields.major = (major + '').split(',').map(major => major.trim());
         }
 
         // Build social object
@@ -243,7 +239,73 @@ router.delete('/role/:exp_id', auth, async (req, res) => {
 });
 
 
+// @route: PUT api/profile/expertise
+// @desc:  Add profile expertise
+// @access Private
+router.put('/expertise', [auth,
+    check('area', 'Area is required').not().isEmpty(),
+    check('degree', 'Degree is required').not().isEmpty(),
+    check('relatedCourses', 'Related courses are required').not().isEmpty(),
+],
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
 
+        const {
+            area,
+            relatedCourses,
+            description
+        } = req.body;
+
+        const newExp = {
+            area,
+            description
+        }
+        newExp.relatedCourses = (relatedCourses + '').split(',').map(relatedCourses => relatedCourses.trim());
+
+        // Get new expertise and put it into the array of expertise.
+        try {
+            const profile = await Profile.findOne({ user: req.user.id });
+
+            profile.expertise.unshift(newExp);
+
+            await profile.save();
+
+            res.json(profile);
+        }
+        catch (err) {
+            console.error(err.message);
+            res.status(500).send('Server Error');
+        }
+
+    });
+
+// @route: DELETE api/profile/expertise/:expertise:id
+// @desc:  Delete an expertise by ID
+// @access Private
+router.delete('/expertise/:expertise_id', auth, async (req, res) => {
+    try {
+        const profile = await Profile.findOne({ user: req.user.id });
+
+        // Get the index of experience we want to remove
+        const removeIndex = profile.expertise
+            .map(item => item.id)
+            .indexOf(req.params.expertise_id);
+
+        profile.expertise.splice(removeIndex, 1);
+
+        await profile.save();
+
+        res.json(profile);
+
+    }
+    catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
 
 
 // @route: PUT api/profile/experience
@@ -426,11 +488,11 @@ router.get('/github/:username', async (req, res) => {
     }
 });
 
-{/*
+/*
 // @route: GET api/profile/expertise/:username
 // @desc: Get users which have certain expertise
 // @access Public
 router.get('')
-*/}
+*/
 
 module.exports = router;

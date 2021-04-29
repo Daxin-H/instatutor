@@ -7,6 +7,7 @@ import Alert from '../layout/Alert';
 import Dashboard from '../dashboard/Dashboard';
 
 import ProfileForm from '../profile-forms/ProfileForm';
+import AddExpertise from '../profile-forms/AddExpertise';
 //Force user to log in, protact dashboard
 import PrivateRoute from '../routing/PrivateRoute';
 
@@ -37,6 +38,7 @@ const Routes = () => {
                 <PrivateRoute path="/Search" component={Search} />
                 <PrivateRoute exact path="/create-profile" component={ProfileForm} />
                 <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
+                <PrivateRoute exact path="/add-expertise" component={AddExpertise} />
                 <Route component={NotFound} />
             </Switch>
         </section>

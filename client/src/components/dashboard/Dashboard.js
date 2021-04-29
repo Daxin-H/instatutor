@@ -8,6 +8,7 @@ import Spinner from '../layout/Spinner';
 
 import Searchbar from '../Search';
 import { render } from 'react-dom';
+import Expertise from './Expertise';
 
 const Dashboard = ({
     SearchBox,
@@ -21,9 +22,6 @@ const Dashboard = ({
     }, []);
     return loading && profile === null ? <Spinner /> :
         <Fragment>
-
-
-
             <hi className="large text-primary"> Personal page </hi>
             <p className="lead">
                 <i className='fas fa-user '></i> Welcome {user && user.name}
@@ -32,6 +30,10 @@ const Dashboard = ({
             {profile !== null ? (
                 <Fragment>
                     <DashboardActions />
+
+                    {profile.role !== 'Student' && (
+                        <Expertise expertise = {profile.expertise}/>
+                    )}
 
                     <div className="my-2">
                         <button className="btn btn-danger" onClick={() => deleteAccount()}>
@@ -47,11 +49,7 @@ const Dashboard = ({
                     <Link to='/create-profile' className='btn btn-primary my-1'>
                         Create Profile
                 </Link>
-
                 </Fragment>
-
-
-
             )}
         </Fragment>
 

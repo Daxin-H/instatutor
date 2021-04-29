@@ -18,15 +18,6 @@ const ProfileSchema = new mongoose.Schema({
         type: [String],
         required: true
     },
-    expertise: {
-        type: [String]
-    },
-    classes: {
-        type: [String]
-    },
-    subjects: {
-        type: [String]
-    },
     location: {
         type: String
     },
@@ -88,6 +79,22 @@ const ProfileSchema = new mongoose.Schema({
             current: {
                 type: Boolean,
                 default: false
+            },
+            description:{
+                type:String
+            }
+        }
+    ],
+
+    expertise: [
+        {
+            area: {
+                type: String,
+                required: true
+            },
+            relatedCourses: {
+                type: [String],
+                required: true
             },
             description:{
                 type:String
