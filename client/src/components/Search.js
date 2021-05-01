@@ -9,7 +9,7 @@ import { createRequest } from '../actions/search';
 
 
 const Search = (props) => {
-    const [img, setImg] = useState("");
+    //const [img, setImg] = useState("");
     const [requestData, setRequestData] = useState({
         request: '',
         course: '',
@@ -35,12 +35,9 @@ const Search = (props) => {
     return (
         <>
             {(formData.role=='Student'||'Both') && (
-            
-
             <Fragment>
 
             <h1 class="large text-primary">Open a Request!</h1>
-
             <div className="searchbar">
                 <input
                     type="text"
@@ -49,7 +46,6 @@ const Search = (props) => {
                     onChange={onChange} />
                 {/*(<Source name={img} />*/}
             </div>
-
             <form className="form" onSubmit={e => onSubmit(e)}>
                 <div className="form-group">
                     <input
@@ -78,8 +74,11 @@ const Search = (props) => {
                         onChange={e => onChange(e)}
                     />
                 </div>
-                <input type="submit" className="btn btn-primary" value="Submit" />
-            </form>
+                <input type="submit" className="btn btn-primary my-1" />
+                <Link className="btn btn-light my-1" to="/dashboard">
+                    Go Back
+                </Link>
+                </form>
             </Fragment>
             )}
 

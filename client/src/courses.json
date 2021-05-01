@@ -1,7 +1,0 @@
-[
-    {"id":1,"course":"CS1","tag":"python"},
-    {"id":2,"course":"data structures","tag":"c++"},
-    {"id":3,"course":"calculus 1","tag":"math"},
-    {"id":4,"course":"calculus 2","tag":"math"},
-    {"id":5,"course":"linear algebra","tag":"math"}
-]

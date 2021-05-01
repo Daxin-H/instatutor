@@ -31,43 +31,7 @@ class SearchContainer extends Component {
     this.handleSubmitCourse = this.handleSubmitCourse.bind(this);
   }
 
-  handleSubmit(event) {
-    alert("The course that you need help with is: "+this.state.course);
-    event.preventDefault();
-  }
-
-  handleChange = event => {
-    this.setState({value:event.target.value});
-  };
-
-  componentDidMount() {
-    const courses = require("./courses.json");
-    this.setState({courses: courses});
-  }
-
-  render() {
-    const {stats,searchField} = this.state
-    const filteredCourses = stats.filter(course => (
-      course.Course.toLowerCase().include(searchField.toLowerCase())
-    ))
-
-    return (
-        <div>
-        <Search placeholder="Search for tutors!" />
-        <form onSubmit={this.handleSubmit}>
-            {(formData.role=='Student'||'Both') && (
-            <div className="searchbar">
-                <input
-                    type="text"
-                    placeholder="Search For Tutors!"
-                    value="course"
-                    onChange={InputEvent} />
-            </div>
-            )}
-        </form>
-        </div>
-    )
-  }
+  
 }
 
 
